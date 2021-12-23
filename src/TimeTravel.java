@@ -59,4 +59,19 @@ public class TimeTravel {
             this.memories.add(new LoveMemory(new File(memory.filename),memory.caption,dateString));
         }
     }
+
+    LoveMemory GetClosestMemory(Date currentDate)
+    {
+        long minDiff = -1, currentTime = currentDate.getTime();
+        LoveMemory minMem = null;
+        for (LoveMemory mem : memories) {
+            Date date = mem.dateoflove;
+            long diff = Math.abs(currentTime - date.getTime());
+            if ((minDiff == -1) || (diff < minDiff)) {
+                minDiff = diff;
+                 minMem = mem;
+            }
+        }
+        return minMem;
+    }
 }
