@@ -63,11 +63,12 @@ public class LoveMemory {
         this.lovepic = lovepic;
     }
 
-    LoveMemory(File image, String memoryCaption, String dateofLove) throws Exception
+    LoveMemory(File image, String memoryCaption, String dateofLove, String love_score) throws Exception
     {
         //szeretleeeeeeeeeeek shit
         lovepic = ImageIO.read(image);
         this.caption = memoryCaption;
         this.dateoflove=new SimpleDateFormat("yyyyMMdd").parse(dateofLove);
+        this.love_score = love_score;
     }
 }

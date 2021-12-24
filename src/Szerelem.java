@@ -16,9 +16,10 @@ public class Szerelem extends JFrame {
     private JPanel lovePanel;
     private JLabel labelhowcanihelp;
     private JButton ourMemoriesFromNowButton;
+    public static TimeTravel idout;
     private SimpleDateFormat displayFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Szerelem() throws IOException {
+    public Szerelem() throws Exception {
         lovePanel = new PanelWithBackgroundImage(ImageIO.read(new File("artifacts\\bg.png")));
         lovePanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
         labelRights = new JLabel();
@@ -50,19 +51,19 @@ public class Szerelem extends JFrame {
         add(lovePanel);
         setContentPane(lovePanel);
         setSize(1280, 720);
+        idout = new TimeTravel();
         ourMemoriesFromNowButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                new MemorySelector(idout);
             }
 
         });
         setVisible(true);
-
     }
 
     public static void main(String[] args) throws Exception {
-        TimeTravel idout = new TimeTravel();
         Szerelem loveunk = new Szerelem();
         loveunk.labelWelcome.setText(loveunk.labelWelcome.getText() + loveunk.displayFormat.format(idout.revertedTime));
     }

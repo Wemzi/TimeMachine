@@ -17,7 +17,7 @@ public class LoveCanvas extends Canvas {
 
     @Override
     public void paint(Graphics g) {
-        Toolkit t = Toolkit.getDefaultToolkit();
         g.drawImage(i,640,480,null);
+        Toolkit t = Toolkit.getDefaultToolkit();
     }
 }

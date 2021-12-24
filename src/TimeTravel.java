@@ -29,7 +29,6 @@ public class TimeTravel {
         if(new File("artifacts\\offset.txt").isFile())
         {
             String[] split = new String(Files.readAllBytes(Paths.get("artifacts\\offset.txt")), StandardCharsets.UTF_8).split(";");
-            System.out.println(split[0] + "  " + split[1]);
             if(split.length ==2)
             {
                 try{
@@ -74,7 +73,7 @@ public class TimeTravel {
         {
             String dateString = memory.filename.split(".jpg")[0];
             memory.filename = "artifacts\\images\\"+memory.filename;
-            this.memories.add(new LoveMemory(new File(memory.filename),memory.caption,dateString));
+            this.memories.add(new LoveMemory(new File(memory.filename),memory.caption,dateString,memory.love_score));
         }
     }
 
