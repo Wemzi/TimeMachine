@@ -56,7 +56,7 @@ public class Szerelem extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                new MemorySelector(idout);
+                new MemorySelector(idout,idout.GetClosestMemory(idout.revertedTime).idx);
             }
 
         });

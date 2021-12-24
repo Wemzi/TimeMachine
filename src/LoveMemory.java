@@ -14,6 +14,7 @@ public class LoveMemory {
     String love_score;
     Date dateoflove;
     BufferedImage lovepic;
+    int idx;
 
     public String getFilename() {
         return filename;
@@ -63,12 +64,13 @@ public class LoveMemory {
         this.lovepic = lovepic;
     }
 
-    LoveMemory(File image, String memoryCaption, String dateofLove, String love_score) throws Exception
+    LoveMemory(File image, String memoryCaption, String dateofLove, String love_score, int idx) throws Exception
     {
         //szeretleeeeeeeeeeek shit
         lovepic = ImageIO.read(image);
         this.caption = memoryCaption;
         this.dateoflove=new SimpleDateFormat("yyyyMMdd").parse(dateofLove);
         this.love_score = love_score;
+        this.idx=idx;
     }
 }

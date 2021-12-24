@@ -73,7 +73,7 @@ public class TimeTravel {
         {
             String dateString = memory.filename.split(".jpg")[0];
             memory.filename = "artifacts\\images\\"+memory.filename;
-            this.memories.add(new LoveMemory(new File(memory.filename),memory.caption,dateString,memory.love_score));
+            this.memories.add(new LoveMemory(new File(memory.filename),memory.caption,dateString,memory.love_score,idx++));
         }
     }
 
