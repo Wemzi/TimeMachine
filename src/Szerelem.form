@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Szerelem">
-  <grid id="27dc6" binding="lovePanel" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="lovePanel" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="816" height="409"/>
+      <xy x="20" y="20" width="816" height="604"/>
     </constraints>
-    <properties/>
+    <properties>
+      <opaque value="false"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="90296" class="javax.swing.JLabel" binding="labelRights">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <horizontalAlignment value="0"/>
@@ -19,34 +21,17 @@
           <verticalTextPosition value="0"/>
         </properties>
       </component>
-      <component id="ed13b" class="javax.swing.JButton" binding="ourMemoriesFromNowButton" default-binding="true">
+      <component id="a71a6" class="javax.swing.JLabel" binding="labelhowcanihelp">
         <constraints>
-          <grid row="1" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="100" height="100"/>
-            <preferred-size width="200" height="150"/>
-            <maximum-size width="200" height="150"/>
-          </grid>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Our memories from now"/>
-        </properties>
-      </component>
-      <component id="84755" class="javax.swing.JButton" binding="memoriesFromTheBeginningButton" default-binding="true">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="100" height="100"/>
-            <preferred-size width="200" height="150"/>
-            <maximum-size width="200" height="150"/>
-          </grid>
-        </constraints>
-        <properties>
-          <hideActionText value="false"/>
-          <text value="Memories from the beginning"/>
+          <text value="How can I help you?"/>
         </properties>
       </component>
       <component id="3e8c8" class="javax.swing.JButton" binding="whatHappenedYearsAgoButton" default-binding="true">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="100" height="100"/>
             <preferred-size width="200" height="150"/>
             <maximum-size width="200" height="150"/>
@@ -59,28 +44,37 @@
           <hideActionText class="java.lang.Boolean" value="false"/>
         </clientProperties>
       </component>
+      <component id="ed13b" class="javax.swing.JButton" binding="ourMemoriesFromNowButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="200" height="150"/>
+            <maximum-size width="200" height="150"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Our memories from now"/>
+        </properties>
+      </component>
+      <component id="84755" class="javax.swing.JButton" binding="memoriesFromTheBeginningButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="200" height="150"/>
+            <maximum-size width="200" height="150"/>
+          </grid>
+        </constraints>
+        <properties>
+          <hideActionText value="false"/>
+          <text value="Memories from the beginning"/>
+        </properties>
+      </component>
       <component id="63463" class="javax.swing.JLabel" binding="labelWelcome">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Dear Piros! This is the real TimeMachine. The Current Date is:"/>
-        </properties>
-      </component>
-      <component id="4ee70" class="javax.swing.JLabel" binding="imageLabel">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="a71a6" class="javax.swing.JLabel" binding="labelhowcanihelp">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="How can I help you?"/>
         </properties>
       </component>
     </children>

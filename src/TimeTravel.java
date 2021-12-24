@@ -7,11 +7,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class TimeTravel {
     public ArrayList<LoveMemory> memories = new ArrayList<>();
+    SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMdd");
     public String today;
     Date revertedTime;
     Date lastOpened;
@@ -24,7 +28,6 @@ public class TimeTravel {
         today = new SimpleDateFormat("yyyyMMdd").format(new Date());
         if(new File("artifacts\\offset.txt").isFile())
         {
-            SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMdd");
             String[] split = new String(Files.readAllBytes(Paths.get("artifacts\\offset.txt")), StandardCharsets.UTF_8).split(";");
             System.out.println(split[0] + "  " + split[1]);
             if(split.length ==2)
@@ -40,13 +43,28 @@ public class TimeTravel {
             }
 
 
-            lastOpened = new SimpleDateFormat("yyyyMMdd").parse(new String(Files.readAllBytes(Paths.get("artifacts\\offset.txt")), StandardCharsets.UTF_8).split(";")[1]);
+            lastOpened = dateformat.parse(new String(Files.readAllBytes(Paths.get("artifacts\\offset.txt")), StandardCharsets.UTF_8).split(";")[1]);
+            long diff = new Date().getTime() - lastOpened.getTime();
+            TimeUnit time = TimeUnit.DAYS;
+            Long i = time.convert(diff, TimeUnit.MILLISECONDS);
+            int difference = i.intValue();
+            if(difference>0)
+            {
+                Calendar c = Calendar.getInstance();
+                c.setTime(revertedTime);
+                c.add(Calendar.DATE,difference);
+                revertedTime=c.getTime();
+            }
+            new File("artifacts\\offset.txt").createNewFile();
+            FileWriter myWriter = new FileWriter("artifacts\\offset.txt");
+            myWriter.write(dateformat.format(revertedTime)+";"+today);
+            myWriter.close();
         }
         else
         {
             new File("artifacts\\offset.txt").createNewFile();
             FileWriter myWriter = new FileWriter("artifacts\\offset.txt");
-            myWriter.write(";"+today);
+            myWriter.write(dateformat.format(revertedTime)+";"+today);
             myWriter.close();
         }
         Gson gson = new Gson();
