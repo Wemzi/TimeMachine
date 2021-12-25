@@ -4,8 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MemorySelector extends JDialog {
     private JPanel contentPane;
@@ -24,6 +28,7 @@ public class MemorySelector extends JDialog {
     public MemorySelector() {
         setContentPane(contentPane);
         setModal(true);
+        setTitle("Memory Selector");
         getRootPane().setDefaultButton(buttonOK);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setListeners();
@@ -86,8 +91,11 @@ public class MemorySelector extends JDialog {
 
     public MemorySelector(TimeTravel idout, int idx) {
         this.idout = idout;
+        this.idx = idx;
+        System.out.println("Starting from " +idx);
         setContentPane(contentPane);
         setModal(true);
+        setTitle("Memory Selector");
         getRootPane().setDefaultButton(buttonOK);
         setDatainLabels();
         setListeners();
@@ -98,7 +106,34 @@ public class MemorySelector extends JDialog {
 
     private void onOK() {
         // add your code here
-        System.out.println("ok");
+        Object[] options = {"Yes",
+                "Yes"};
+        int choice  = JOptionPane.showOptionDialog(this,
+                "Are you sure you want to go back? \n" +
+                        "This means we'll hold our consciousness,\n" +
+                        " so we would know what happened if we did it this way. \n" +
+                        " This means ultimately that we go back to a time\n" +
+                        " where we have made no bad decisions,\n" +
+                        " but own the experience. Choose wisely. ;)\n",
+                        "Reverting time",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,options,options[0]);
+        idout.revertedTime = idout.memories.get(MemorySelector.idx).dateoflove;
+        String today = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMdd");
+        try
+        {
+            new File("artifacts\\offset.txt").createNewFile();
+            FileWriter myWriter = new FileWriter("artifacts\\offset.txt");
+            myWriter.write(dateformat.format(idout.revertedTime)+";"+today);
+            System.out.println("writing data");
+            myWriter.close();
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
         dispose();
     }
 
@@ -106,13 +141,6 @@ public class MemorySelector extends JDialog {
         // add your code here if necessary
         System.out.println("cancel");
         dispose();
-    }
-
-    public static void main(String[] args) {
-        MemorySelector dialog = new MemorySelector();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.out.println("hello");
     }
 
     {
@@ -158,11 +186,11 @@ public class MemorySelector extends JDialog {
         label1 = new JLabel();
         panel3.add(label1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 6, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, new Dimension(800, 600),null,null, 0, false));
         label2 = new JLabel();
-        panel3.add(label2, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel3.add(label2, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, new Dimension(1000,1000), 0, false));
         label3 = new JLabel();
-        panel3.add(label3, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel3.add(label3, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED,  new Dimension(100, 100), new Dimension(100, 100),  new Dimension(100, 100), 0, false));
         label4 = new JLabel();
-        panel3.add(label4, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, new Dimension(100, 100), null, null, 0, false));
+        panel3.add(label4, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, new Dimension(180, 100),  new Dimension(180, 100),  new Dimension(180, 100), 0, true));
     }
 
     /**

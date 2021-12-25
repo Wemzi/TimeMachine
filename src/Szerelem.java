@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Szerelem extends JFrame {
     private JButton whatHappenedYearsAgoButton;
@@ -57,6 +61,33 @@ public class Szerelem extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 new MemorySelector(idout,idout.GetClosestMemory(idout.revertedTime).idx);
+                labelWelcome.setText("The current date is: "+ displayFormat.format(idout.revertedTime));
+            }
+
+        });
+        memoriesFromTheBeginningButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                new MemorySelector(idout,0);
+                labelWelcome.setText("The current date is: "+ displayFormat.format(idout.revertedTime));
+            }
+
+        });
+        whatHappenedYearsAgoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                String number = JOptionPane.showInputDialog("Enter number of years, you want to go back from current date");
+                int num = Integer.parseInt(number);
+                Date in = idout.revertedTime;
+                Calendar c = Calendar.getInstance();
+                c.setTime(in);
+                c.add(Calendar.YEAR,-1 * num);
+                Date out = c.getTime();
+                System.out.println(new SimpleDateFormat("yyyyMMdd").format(out));
+                new MemorySelector(idout,idout.GetClosestMemory(out).idx);
+                labelWelcome.setText("The current date is: "+ displayFormat.format(idout.revertedTime));
             }
 
         });
